@@ -33,7 +33,11 @@ document.addEventListener('DOMContentLoaded', function () {
   const copyBtn = document.querySelector('.copy-btn');
   if (copyBtn) {
     copyBtn.addEventListener('click', () => {
-      const citationText = document.querySelector('.citation-box').innerText.replace('📋 Copy', '').trim();
+      const citationBox = document.querySelector('.citation-box');
+      // Clone the node, remove the copy button, then extract text
+      const clone = citationBox.cloneNode(true);
+      clone.querySelector('.copy-btn')?.remove();
+      const citationText = clone.innerText.trim();
       navigator.clipboard.writeText(citationText).then(() => {
         showToast('Citation copied to clipboard!');
         copyBtn.textContent = '✓ Copied!';
