@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BoxComm Dataset</title>
+  <meta name="description" content="Interactive BoxComm dataset page with synchronized demo clips, event streams, commentary, and skeleton overlays." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="static/css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🥊</text></svg>" />
+</head>
+<body data-page="dataset">
+  <div class="site-shell">
+    <nav class="topbar">
+      <div class="topbar-inner">
+        <a class="brand" href="index.html">
+          <span class="brand-mark">🥊</span>
+          <span class="brand-copy">
+            <strong>BoxComm</strong>
+            <span>Combat Sports Commentary Benchmark</span>
+          </span>
+        </a>
+        <div class="nav-links">
+          <a href="index.html" data-page-link="overview">Overview</a>
+          <a href="dataset.html" data-page-link="dataset">Dataset</a>
+          <a href="benchmark.html" data-page-link="benchmark">Benchmark</a>
+          <a class="is-cta" href="https://github.com/gouba2333/BoxComm">GitHub</a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="page">
+      <section class="hero-panel">
+        <div class="hero-grid">
+          <div>
+            <h1 class="hero-title">Interactive demos for <span class="accent">forty evaluation matches</span></h1>
+            <p class="hero-subtitle">
+              This page turns BoxComm into a browsable dataset viewer with synchronized punch-event streams for red and blue corners, category-labeled commentary, and an optional HMR-based skeleton overlay.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#demo-viewer">Jump to Demos</a>
+              <a class="btn btn-secondary" href="benchmark.html">Read Evaluation Setup</a>
+            </div>
+          </div>
+          <div class="hero-card-stack">
+            <div class="mini-card">
+              <strong>40</strong>
+              <span>eval-set demo clips</span>
+            </div>
+            <div class="mini-card">
+              <strong>Pose + Events</strong>
+              <span>postprocess PKL and punch JSON synchronized into one viewer</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="demo-viewer" data-demo-root>
+        <div class="section-header">
+          <span class="section-kicker">Interactive Demo</span>
+          <p class="lead">Each demo clip is a 30-second segment selected from the first round of an evaluation match.</p>
+          <h2 data-sample-title hidden>Loading sample...</h2>
+          <p class="lead" data-sample-summary hidden>Preparing synchronized demo assets.</p>
+        </div>
+
+        <div class="sample-picker" data-sample-picker></div>
+
+        <div class="dataset-shell" style="margin-top: 20px;">
+          <div class="viewer-layout">
+            <aside class="timeline-column">
+              <h3 class="red-heading">Red Events</h3>
+              <div class="event-list" data-red-events></div>
+            </aside>
+
+            <div class="dataset-card">
+              <div class="matchup-line" data-matchup></div>
+              <div class="viewer-toolbar">
+                <div class="toggle-row">
+                  <label class="toggle">
+                    <input type="checkbox" data-toggle-skeleton checked />
+                    Show Skeleton Overlay
+                  </label>
+                </div>
+                <div class="meta-row" data-sample-meta></div>
+              </div>
+
+              <div class="viewer-stage">
+                <video data-demo-video controls preload="metadata"></video>
+                <canvas data-skeleton-canvas></canvas>
+              </div>
+
+              <div class="commentary-panel">
+                <div class="commentary-list" data-commentary></div>
+                <div class="commentary-head commentary-head-below">
+                  <h3 style="margin: 0;">Commentary Stream</h3>
+                  <div class="commentary-legend">
+                    <span class="legend-chip"><span class="legend-dot play-by-play"></span>Play-by-Play</span>
+                    <span class="legend-chip"><span class="legend-dot tactical"></span>Tactical</span>
+                    <span class="legend-chip"><span class="legend-dot contextual"></span>Contextual</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <aside class="timeline-column">
+              <h3 class="blue-heading">Blue Events</h3>
+              <div class="event-list" data-blue-events></div>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="footer">Dataset page presents 40 evaluation-match demo clips with synchronized video, events, commentary, and pose overlays.</div>
+  </div>
+  <script src="static/js/site.js"></script>
+  <script src="static/js/dataset.js"></script>
+</body>
+</html>

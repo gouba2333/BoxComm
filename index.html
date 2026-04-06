@@ -3,331 +3,161 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BoxComm: Benchmarking Category-Aware Commentary Generation and Narration Rhythm in Boxing</title>
-  <meta name="description" content="BoxComm is a large-scale dataset comprising 445 World Boxing Championship match videos with over 52K commentary sentences from professional broadcasts, introducing category-level annotations and two novel evaluation protocols." />
-  <meta property="og:title" content="BoxComm: Benchmarking Category-Aware Commentary Generation and Narration Rhythm in Boxing" />
-  <meta property="og:description" content="A large-scale benchmark for category-aware sports commentary generation and narration rhythm analysis in boxing." />
-  <meta property="og:type" content="website" />
-
-  <!-- Fonts -->
+  <title>BoxComm Overview</title>
+  <meta name="description" content="BoxComm overview page with dataset motivation, summary statistics, and site navigation." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
-
-  <!-- Styles -->
   <link rel="stylesheet" href="static/css/style.css" />
-
-  <style>
-    .pdf-figure {
-      width: 100%;
-      border-radius: var(--radius);
-      overflow: hidden;
-      background: #f0f0f0;
-    }
-    .pdf-figure object,
-    .pdf-figure iframe {
-      width: 100%;
-      min-height: 480px;
-      border: none;
-      display: block;
-    }
-    .method-figures {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-      margin-bottom: 1.5rem;
-    }
-    @media (max-width: 768px) {
-      .method-figures { grid-template-columns: 1fr; }
-    }
-    .highlight-list {
-      list-style: none;
-      padding: 0;
-      margin: 1.5rem 0;
-    }
-    .highlight-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.75rem;
-      padding: 0.85rem 1rem;
-      background: white;
-      border-radius: var(--radius-sm);
-      margin-bottom: 0.75rem;
-      box-shadow: var(--shadow);
-      font-size: 0.95rem;
-      line-height: 1.6;
-    }
-    .highlight-list li .bullet-icon {
-      font-size: 1.3rem;
-      flex-shrink: 0;
-      margin-top: 0.05rem;
-    }
-    .taxonomy-pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      justify-content: center;
-      margin: 1.5rem 0;
-    }
-    .taxonomy-pill {
-      padding: 0.5rem 1.25rem;
-      border-radius: 50px;
-      font-weight: 600;
-      font-size: 0.9rem;
-    }
-    .pill-tactical   { background: #fdecea; color: var(--primary); }
-    .pill-contextual { background: #e8f4fd; color: #1a6fa3; }
-    .pill-pbp        { background: #eafaf1; color: #1e8449; }
-    .method-card {
-      background: white;
-      border-radius: var(--radius);
-      padding: 1.5rem;
-      box-shadow: var(--shadow);
-    }
-    .method-card h3 {
-      font-size: 1.05rem;
-      font-weight: 700;
-      margin-bottom: 0.6rem;
-      color: var(--primary);
-    }
-    .method-card p {
-      font-size: 0.92rem;
-      color: var(--text-muted);
-      line-height: 1.7;
-    }
-  </style>
-
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🥊</text></svg>" />
 </head>
-<body>
-
-  <!-- ==================== NAVBAR ==================== -->
-  <nav class="navbar">
-    <div class="navbar-inner">
-      <a class="navbar-brand" href="#">
-        <span class="brand-icon">🥊</span>
-        BoxComm
-      </a>
-      <ul class="navbar-links">
-        <li><a href="#abstract">Abstract</a></li>
-        <li><a href="#dataset">Dataset</a></li>
-        <li><a href="#methodology">Methodology</a></li>
-        <li><a href="#citation">Citation</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <!-- ==================== HERO ==================== -->
-  <header class="hero">
-    <div class="hero-content">
-      <h1>
-        <span class="highlight">BoxComm</span>: Benchmarking Category-Aware<br/>
-        Commentary Generation and Narration Rhythm in Boxing
-      </h1>
-
-      <!-- Authors -->
-      <div class="authors">
-        <span class="author">Kaiwen Wang<sup>*</sup></span>
-        <span class="author">Kaili Zheng<sup>*</sup></span>
-        <span class="author">Yiming Shi</span>
-        <span class="author">Xiuheng Zhao</span>
-        <span class="author">Chenyi Guo</span>
-        <span class="author">Ji Wu<sup>†</sup></span>
-      </div>
-
-      <!-- Affiliations -->
-      <div class="affiliations">
-        <span class="affiliation">Tsinghua University, Beijing, China</span>
-      </div>
-      <div style="font-size:0.82rem;color:var(--text-muted);margin-top:0.3rem;">
-        <sup>*</sup> Equal contribution &nbsp;·&nbsp; <sup>†</sup> Corresponding author
-      </div>
-
-      <!-- Action Buttons -->
-      <div class="hero-buttons">
-        <a class="btn btn-primary" href="#" title="Paper PDF">
-          📄 Paper (PDF)
+<body data-page="overview">
+  <div class="site-shell">
+    <nav class="topbar">
+      <div class="topbar-inner">
+        <a class="brand" href="index.html">
+          <span class="brand-mark">🥊</span>
+          <span class="brand-copy">
+            <strong>BoxComm</strong>
+            <span>Combat Sports Commentary Benchmark</span>
+          </span>
         </a>
-        <a class="btn btn-dark" href="https://github.com/gouba2333/BoxComm" title="Code &amp; Dataset">
-          <svg height="18" viewBox="0 0 16 16" fill="currentColor" style="vertical-align:middle"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-          Code &amp; Dataset
-        </a>
-      </div>
-    </div>
-  </header>
-
-  <!-- ==================== TEASER + ABSTRACT ==================== -->
-  <section id="abstract">
-    <div class="container">
-
-      <!-- Teaser figure -->
-      <div class="overview-figure" style="margin-bottom:2rem;">
-        <img src="static/images/teaser.png" alt="Teaser figure" style="width:100%;border-radius:var(--radius);" />
-        <div class="figure-caption">
-          An overview of the unique characteristics of combat sports and their commentary style differences,
-          introducing the BoxComm commentary benchmark to evaluate both <em>what to say</em> and <em>when to say it</em>.
+        <div class="nav-links">
+          <a href="index.html" data-page-link="overview">Overview</a>
+          <a href="dataset.html" data-page-link="dataset">Dataset</a>
+          <a href="benchmark.html" data-page-link="benchmark">Benchmark</a>
+          <a class="is-cta" href="https://github.com/gouba2333/BoxComm">GitHub</a>
         </div>
       </div>
+    </nav>
 
-      <div class="section-badge">Abstract</div>
-      <h2 class="section-title">Overview</h2>
-      <p class="abstract-text">
-        Recent multimodal large language models (MLLMs) have shown strong capabilities in general video
-        understanding, driving growing interest in automatic sports commentary generation. However, existing
-        benchmarks for this task focus exclusively on team sports such as soccer and basketball, leaving combat
-        sports entirely unexplored. Notably, combat sports present distinct challenges: critical actions unfold
-        within milliseconds with visually subtle yet semantically decisive differences, and professional commentary
-        contains a substantially higher proportion of tactical analysis compared to team sports. In this paper,
-        we present <strong>BoxComm</strong>, a large-scale dataset comprising 445 World Boxing Championship match
-        videos with over 52K commentary sentences from professional broadcasts. We propose a structured commentary
-        taxonomy that categorizes each sentence into <em>play-by-play</em>, <em>tactical</em>, or
-        <em>contextual</em>, providing the first category-level annotation for sports commentary benchmarks.
-        Building on this taxonomy, we introduce two novel and complementary evaluations tailored to sports
-        commentary generation: (1) <strong>category-conditioned generation</strong>, which evaluates whether
-        models can produce accurate commentary of a specified type given video context; and (2)
-        <strong>commentary rhythm assessment</strong>, which measures whether freely generated commentary exhibits
-        appropriate temporal pacing and type distribution over continuous video segments, capturing a dimension of
-        commentary competence that prior benchmarks have not addressed. Experiments on multiple state-of-the-art
-        MLLMs reveal that current models struggle on both evaluations. We further propose <strong>EIC-Gen</strong>,
-        an improved baseline incorporating detected punch events to supply structured action cues, yielding
-        consistent gains and highlighting the importance of perceiving fleeting and subtle events for combat sports
-        commentary.
-      </p>
-    </div>
-  </section>
-
-  <!-- ==================== DATASET ==================== -->
-  <section id="dataset" style="background:#f8f9fa;">
-    <div class="container">
-      <div class="section-badge">Dataset</div>
-      <h2 class="section-title">BoxComm Dataset</h2>
-      <p class="section-subtitle">
-        The first large-scale combat sports commentary benchmark with category-level annotation.
-      </p>
-
-      <!-- Stat figure -->
-      <div class="overview-figure" style="margin-bottom:2rem;">
-        <img src="static/images/stat.png" alt="Dataset statistics" style="width:100%;border-radius:var(--radius);" />
-      </div>
-
-      <!-- Taxonomy pills -->
-      <div class="taxonomy-pills">
-        <span class="taxonomy-pill pill-tactical">🧠 Tactical — 43.1%</span>
-        <span class="taxonomy-pill pill-contextual">📖 Contextual — 33.1%</span>
-        <span class="taxonomy-pill pill-pbp">🎙️ Play-by-Play — 23.7%</span>
-      </div>
-
-      <!-- Highlight bullets -->
-      <ul class="highlight-list">
-        <li>
-          <span class="bullet-icon">🎬</span>
+    <main class="page">
+      <section class="hero-panel">
+        <div class="hero-grid">
           <div>
-            <strong>Scale:</strong> 445 World Boxing Championship match videos — 405 for training and 40 for evaluation — with over <strong>52,000</strong> professionally broadcast commentary sentences.
+            <h1 class="hero-title"><span class="accent">BoxComm:</span> Benchmarking Category-Aware Commentary Generation and Narration Rhythm in Boxing</h1>
+
+            <div class="authors">
+              <span class="author-pill">Kaiwen Wang<sup>1,*</sup></span>
+              <span class="author-pill">Kaili Zheng<sup>1,*</sup></span>
+              <span class="author-pill">Yiming Shi<sup>1</sup></span>
+              <span class="author-pill">Rongrong Deng<sup>2</sup></span>
+              <span class="author-pill">Chenyi Guo<sup>1,†</sup></span>
+              <span class="author-pill">Ji Wu<sup>1,†</sup></span>
+            </div>
+            <div class="affiliations">
+              <span class="affiliation-pill"><sup>1</sup> Tsinghua University</span>
+              <span class="affiliation-pill"><sup>2</sup> Beijing Sport University</span>
+            </div>
+            <div class="hero-meta"><sup>*</sup> Equal contribution · <sup>†</sup> Corresponding author</div>
+
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="dataset.html">Explore Dataset Demo</a>
+              <a class="btn btn-secondary" href="benchmark.html">See Benchmark Tasks</a>
+            </div>
           </div>
-        </li>
-        <li>
-          <span class="bullet-icon">🏷️</span>
+
+          <div class="hero-card-stack">
+            <div class="mini-card">
+              <strong>445 matches<br/>77.8 hours</strong>
+              <span>World Boxing Championship videos</span>
+            </div>
+            <div class="mini-card">
+              <strong>52K</strong>
+              <span>Broadcast commentary sentences with category labels</span>
+            </div>
+            <div class="mini-card">
+              <strong>260K</strong>
+              <span>Millisecond-level punch events</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <span class="section-kicker">Overview</span>
+          <h2>Why we need BoxComm?</h2>
+        </div>
+        <div class="figure-card teaser-card">
+          <img src="static/images/teaser.png" alt="BoxComm teaser figure" />
+          <div class="figure-caption">
+            Unlike team sports, combat sports like boxing feature highly dynamic, sub-second actions and demand a significantly higher proportion of tactical commentary (45.6% vs. 21.7% in team sports). To address these unique characteristics, BoxComm introduces a new benchmark based on a three-tier commentary taxonomy—Play-by-Play, Tactical, and Contextual —specifically designed to evaluate both the content ("what to say") and the narration rhythm ("when to say")  of automated sports generation.
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="dual-grid">
           <div>
-            <strong>Category-level annotation:</strong> The first sports commentary dataset with sentence-level category labels. Tactical commentary leads at <strong>43.1%</strong>, followed by Contextual (<strong>33.1%</strong>) and Play-by-Play (<strong>23.7%</strong>).
+            <div class="section-header">
+              <span class="section-kicker">Key Ingredients</span>
+              <h2>What makes BoxComm different?</h2>
+            </div>
+            <div class="bullet-list">
+              <div class="bullet-item">
+                <div class="icon">🎙️</div>
+                <div>
+                  <strong>Category-aware commentary</strong>
+                  <span>Each sentence is labeled as play-by-play, tactical, or contextual, so models are tested on discourse type rather than generic narration alone.</span>
+                </div>
+              </div>
+              <div class="bullet-item">
+                <div class="icon">👊</div>
+                <div>
+                  <strong>Fine-grained punch events</strong>
+                  <span>Detected events carry boxer side, punch technique, target area, and effectiveness to support structured understanding of combat exchanges.</span>
+                </div>
+              </div>
+              <div class="bullet-item">
+                <div class="icon">⏱️</div>
+                <div>
+                  <strong>Streaming evaluation</strong>
+                  <span>Benchmark tasks cover both single-moment category-conditioned generation and full-stream commentary rhythm assessment.</span>
+                </div>
+              </div>
+            </div>
           </div>
-        </li>
-        <li>
-          <span class="bullet-icon">👊</span>
-          <div>
-            <strong>Fine-grained punch events:</strong> <strong>260,000</strong> millisecond-level punch events extracted, annotated with punch type (jab, cross, hook) and effectiveness.
+          <div class="content-card">
+            <div class="figure-card">
+              <img src="static/images/stat.png?v=20260406" alt="BoxComm statistics" />
+            <div class="figure-caption">BoxComm dataset statistics</div>
+            </div>
           </div>
-        </li>
-      </ul>
-    </div>
-  </section>
+        </div>
+      </section>
 
-  <!-- ==================== METHODOLOGY ==================== -->
-  <section id="methodology">
-    <div class="container">
-      <div class="section-badge">Methodology &amp; Protocols</div>
-      <h2 class="section-title">Evaluation Protocols &amp; Approach</h2>
-      <p class="section-subtitle">
-        Overview of the two proposed evaluation protocols: category-conditioned commentary generation and
-        streaming commentary rhythm assessment.
-      </p>
+      <section class="section">
+        <div class="section-header">
+          <span class="section-kicker">Construction</span>
+          <h2>How the dataset is built</h2>
+          <p class="lead">BoxComm is constructed by aligning broadcast commentary extraction with fine-grained atom-event detection for boxing exchanges.</p>
+        </div>
+        <div class="stack-grid">
+          <div class="figure-card scaled-figure">
+            <img src="static/images/asr.png" alt="Commentary extraction via ASR" />
+            <div class="figure-caption">Commentary extraction and alignment pipeline from professional boxing broadcasts.</div>
+          </div>
+          <div class="figure-card scaled-figure">
+            <img src="static/images/atom_event_extraction.png" alt="Atom event extraction pipeline" />
+            <div class="figure-caption">Atom-event extraction pipeline for millisecond-level punch events used in BoxComm.</div>
+          </div>
+        </div>
+      </section>
 
-      <!-- Architecture figure -->
-      <div class="overview-figure" style="margin-bottom:1.5rem;">
-        <img src="static/images/architecture.png" alt="Evaluation protocols overview" style="width:100%;border-radius:var(--radius);" />
-      </div>
-      <div class="figure-caption" style="margin-bottom:2.5rem;">
-        Overview of the two proposed evaluation protocols: category-conditioned commentary generation and
-        streaming commentary rhythm assessment.
-      </div>
-
-      <!-- Method cards -->
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.25rem;">
-        <div class="method-card">
-          <h3>📝 Category-Conditioned Generation</h3>
-          <p>
-            Evaluates <em>what to say</em>: given a video clip and a specified commentary category
-            (play-by-play, tactical, or contextual), models must generate accurate commentary of that type.
-            This measures the model's ability to produce category-faithful, content-grounded commentary.
+      <section class="section">
+        <div class="section-header">
+          <span class="section-kicker">Acknowledgments</span>
+          <h2>Acknowledgments</h2>
+          <p class="lead">
+            This research was supported by Huawei’s AI Hundred Schools Program and was carried out using the Huawei Ascend AI technology stack.
+            Additionally, we would like to acknowledge the Xinjiang Uygur Autonomous Region Sports Science Research Center and the research group led by Prof. Qingmin Fan at Beijing Sport University for their critical assistance with the data collection and annotation iteration processes.
           </p>
         </div>
-        <div class="method-card">
-          <h3>⏱️ Commentary Rhythm Assessment</h3>
-          <p>
-            Evaluates <em>when to say it</em>: freely generated commentary over continuous video segments is
-            assessed for appropriate temporal pacing and type distribution. This captures a dimension of
-            commentary competence not addressed by any prior benchmark.
-          </p>
-        </div>
-        <div class="method-card">
-          <h3>🤖 EIC-Gen Baseline</h3>
-          <p>
-            To address MLLMs' perceptual blind spots on millisecond-level actions, we propose
-            <strong>EIC-Gen</strong> (Event-Informed Commentary Generation). It integrates structured
-            punch events — detected via Human Mesh Recovery and object detection — with video features,
-            yielding consistent gains on both evaluation protocols.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
+      </section>
+    </main>
 
-  <!-- ==================== CITATION ==================== -->
-  <section id="citation" style="background:#f8f9fa;">
-    <div class="container">
-      <div class="section-badge">Citation</div>
-      <h2 class="section-title">Cite BoxComm</h2>
-      <p class="section-subtitle">
-        If you use BoxComm in your research, please cite our paper.
-      </p>
-
-      <div class="citation-box">
-        <button class="copy-btn">📋 Copy</button>
-<span class="bib-entry">@article</span>{<span class="bib-key">boxcomm2025</span>,<br/>
-&nbsp;&nbsp;<span class="bib-field">title</span>&nbsp;&nbsp; = {<span class="bib-value">BoxComm: Benchmarking Category-Aware Commentary Generation and Narration Rhythm in Boxing</span>},<br/>
-&nbsp;&nbsp;<span class="bib-field">author</span> = {<span class="bib-value">Wang, Kaiwen and Zheng, Kaili and Shi, Yiming and Zhao, Xiuheng and Guo, Chenyi and Wu, Ji</span>},<br/>
-&nbsp;&nbsp;<span class="bib-field">year</span>&nbsp;&nbsp; = {<span class="bib-value">2025</span>},<br/>
-&nbsp;&nbsp;<span class="bib-field">url</span>&nbsp;&nbsp;&nbsp; = {<span class="bib-value">https://gouba2333.github.io/BoxComm/</span>}<br/>
-}
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== FOOTER ==================== -->
-  <footer>
-    <div class="footer-links">
-      <a href="#abstract">Abstract</a>
-      <a href="#dataset">Dataset</a>
-      <a href="#methodology">Methodology</a>
-      <a href="#citation">Citation</a>
-      <a href="https://github.com/gouba2333/BoxComm">GitHub</a>
-    </div>
-    <p>
-      BoxComm © 2025 · Built for the research community ·
-      Website inspired by <a href="https://nerfies.github.io">Nerfies</a>
-    </p>
-  </footer>
-
-  <!-- Script -->
-  <script src="static/js/index.js"></script>
+    <div class="footer">Overview page introduces the motivation, construction pipeline, and acknowledgments for the BoxComm benchmark.</div>
+  </div>
+  <script src="static/js/site.js"></script>
 </body>
 </html>

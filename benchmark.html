@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BoxComm Benchmark</title>
+  <meta name="description" content="BoxComm benchmark page with evaluation protocols, baseline framing, and citation." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="static/css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🥊</text></svg>" />
+</head>
+<body data-page="benchmark">
+  <div class="site-shell">
+    <nav class="topbar">
+      <div class="topbar-inner">
+        <a class="brand" href="index.html">
+          <span class="brand-mark">🥊</span>
+          <span class="brand-copy">
+            <strong>BoxComm</strong>
+            <span>Combat Sports Commentary Benchmark</span>
+          </span>
+        </a>
+        <div class="nav-links">
+          <a href="index.html" data-page-link="overview">Overview</a>
+          <a href="dataset.html" data-page-link="dataset">Dataset</a>
+          <a href="benchmark.html" data-page-link="benchmark">Benchmark</a>
+          <a class="is-cta" href="https://github.com/gouba2333/BoxComm">GitHub</a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="page">
+      <section class="hero-panel">
+        <div class="hero-grid">
+          <div>
+            <h1 class="hero-title">Two complementary protocols for <span class="accent">accuracy and rhythm</span></h1>
+            <p class="hero-subtitle">
+              BoxComm evaluates both instant commentary correctness and long-horizon broadcast pacing.
+              The benchmark is intended to reveal whether a model can describe the right thing at the right time and in the right discourse mode.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="dataset.html">Open Demo Viewer</a>
+              <a class="btn btn-secondary" href="https://github.com/gouba2333/BoxComm">Open Repository</a>
+            </div>
+          </div>
+          <div class="hero-card-stack">
+            <div class="mini-card">
+              <strong>Task 1</strong>
+              <span>Category-conditioned commentary generation</span>
+            </div>
+            <div class="mini-card">
+              <strong>Task 2</strong>
+              <span>Streaming commentary rhythm assessment</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <span class="section-kicker">Protocols</span>
+          <h2>From sentence-level correctness to full-stream pacing</h2>
+          <p class="lead">
+            The two benchmark protocols intentionally target different failure modes. One measures local semantic precision under category control, while the other measures global temporal behavior over continuous clips.
+          </p>
+        </div>
+        <div class="figure-card">
+          <img src="static/images/architecture.png" alt="BoxComm benchmark architecture" />
+          <div class="figure-caption">Overview of the two proposed evaluation protocols: category-conditioned generation and streaming commentary rhythm assessment.</div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="columns-3">
+          <div class="info-card">
+            <h3>Category-Conditioned Generation</h3>
+            <p>Given video context and a target class, the model must produce a natural sentence that matches the requested commentary type and the current fight state.</p>
+          </div>
+          <div class="info-card">
+            <h3>Rhythm Assessment</h3>
+            <p>The model is allowed to generate over streaming clips, and the evaluation checks whether timing and category distribution resemble professional broadcasts.</p>
+          </div>
+          <div class="info-card is-emphasis">
+            <h3>Event-Informed Baseline</h3>
+            <p>EIC-Gen injects punch-event cues into commentary generation, showing that fleeting action perception directly matters for combat-sport narration quality.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <span class="section-kicker">Citation</span>
+          <h2>BibTeX</h2>
+          <p class="lead">Replace the placeholder citation with the final publication record when ready.</p>
+        </div>
+        <div class="citation-box">@article{boxcomm2025,
+  title   = {BoxComm: Benchmarking Category-Aware Commentary Generation and Narration Rhythm in Boxing},
+  author  = {Wang, Kaiwen and Zheng, Kaili and Shi, Yiming and Deng, Rongrong and Guo, Chenyi and Wu, Ji},
+  journal = {arXiv preprint},
+  year    = {2025}
+}</div>
+      </section>
+    </main>
+
+    <div class="footer">Benchmark page summarizes the two evaluation protocols and the event-informed baseline used in BoxComm.</div>
+  </div>
+  <script src="static/js/site.js"></script>
+</body>
+</html>
