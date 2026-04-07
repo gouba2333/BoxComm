@@ -278,12 +278,21 @@ img {
 .btn-primary {
   color: #fff;
   background: var(--brand);
+  border: 1px solid rgba(179, 58, 47, 0.65);
 }
 
 .btn-secondary {
-  color: #fff;
-  background: rgba(255, 255, 255, 0.10);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: var(--ink);
+  background: #fff;
+  border: 1px solid rgba(217, 208, 194, 0.9);
+}
+
+.btn-primary:hover {
+  background: var(--brand-dark);
+}
+
+.btn-secondary:hover {
+  background: #f7f2eb;
 }
 
 .hero-card-stack {
@@ -810,11 +819,7 @@ img {
   background: #fff;
   border: 1px solid rgba(217, 208, 194, 0.74);
   border-left-width: 10px;
-}
-
-.commentary-item.is-active {
-  border-color: rgba(179, 58, 47, 0.45);
-  box-shadow: inset 0 0 0 1px rgba(179, 58, 47, 0.14);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
 }
 
 .commentary-item.play-by-play {
@@ -830,6 +835,28 @@ img {
 .commentary-item.contextual {
   border-left-color: #f0cf79;
   background: linear-gradient(90deg, rgba(240, 207, 121, 0.22), rgba(255, 255, 255, 0.92) 22%);
+}
+
+.commentary-item.is-active {
+  transform: translateX(1px);
+}
+
+.commentary-item.play-by-play.is-active {
+  border-color: rgba(47, 105, 200, 0.32);
+  border-left-color: #2f69c8;
+  box-shadow: inset 0 0 0 1px rgba(47, 105, 200, 0.08);
+}
+
+.commentary-item.tactical.is-active {
+  border-color: rgba(212, 63, 54, 0.32);
+  border-left-color: #d43f36;
+  box-shadow: inset 0 0 0 1px rgba(212, 63, 54, 0.08);
+}
+
+.commentary-item.contextual.is-active {
+  border-color: rgba(230, 169, 74, 0.36);
+  border-left-color: #e6a94a;
+  box-shadow: inset 0 0 0 1px rgba(230, 169, 74, 0.09);
 }
 
 .commentary-item header {
