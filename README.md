@@ -14,6 +14,13 @@ BoxComm is a boxing commentary benchmark and code release for category-aware com
 - Dataset: https://huggingface.co/datasets/gouba2333/BoxComm-Dataset
 - Benchmark: https://huggingface.co/datasets/gouba2333/BoxComm
 
+## Downloads
+
+- Dataset download page: https://huggingface.co/datasets/gouba2333/BoxComm-Dataset
+- Benchmark download page: https://huggingface.co/datasets/gouba2333/BoxComm
+
+The public dataset release contains the processed videos, ASR annotations, event annotations, skeleton data, and split metadata. The benchmark release contains the official evaluation manifest and metadata used by the evaluation scripts.
+
 ## Highlights
 
 - Category-aware boxing commentary generation with 3 commentary classes
@@ -68,7 +75,7 @@ conda activate boxcomm
 pip install -r requirements.txt
 ```
 
-For scripts that use an OpenAI-compatible API, set:
+For scripts that use optional OpenAI-compatible evaluation backends, set:
 
 ```bash
 export OPENAI_API_KEY=YOUR_KEY
@@ -84,7 +91,7 @@ export HF_TOKEN=YOUR_HUGGINGFACE_TOKEN
 
 ## Data Layout
 
-The released dataset contains the complete processed videos and annotations. After downloading the released data, place files as follows:
+Download the public dataset from the Hugging Face dataset page above, then place files as follows:
 
 ```text
 data/
@@ -222,7 +229,7 @@ python scripts/eval_metrics.py \
 This script reports:
 
 - BERTScore F1
-- GPT-based semantic consistency
+- GPT-based semantic consistency when an OpenAI-compatible judge is configured
 - per-class breakdown for class 1 / 2 / 3
 
 ### 2. Commentary Rhythm / Distribution Evaluation
