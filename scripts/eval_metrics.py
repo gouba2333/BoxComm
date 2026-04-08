@@ -173,7 +173,7 @@ def _build_gpt_eval_prompt(batch_rows: List[Dict[str, Any]], mode: str = "lenien
     for i, r in enumerate(batch_rows):
         pairs.append({"i": i, "reference": r["target_text"], "prediction": r["pred_text"]})
 
-    if mode == "strict":
+    if mode == "strict": # default is lenient, strict mode can be used for play-by-play class where we require more precise matching of core meaning and event.
         rubric = (
             "You are an evaluator for sports commentary sentence matching.\n"
             "For each pair, output score=1 only if prediction and reference describe basically the same content/event/meaning.\n"

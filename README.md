@@ -1,10 +1,26 @@
 # BoxComm
 
-[Project Page](https://gouba2333.github.io/BoxComm) | [Paper](http://arxiv.org/abs/2604.04419)
+[Project Page](https://gouba2333.github.io/BoxComm) | [Paper](http://arxiv.org/abs/2604.04419) | [GitHub](https://github.com/gouba2333/BoxComm) | [Dataset](https://huggingface.co/datasets/gouba2333/BoxComm-Dataset) | [Benchmark](https://huggingface.co/datasets/gouba2333/BoxComm)
 
 ![BoxComm teaser](static/images/teaser.png)
 
 BoxComm is a boxing commentary benchmark and code release for category-aware commentary generation and narration-rhythm evaluation. This repository contains the data preparation, ASR post-processing, Qwen3-VL fine-tuning, inference, and evaluation scripts used in our pipeline.
+
+## Resources
+
+- Project Page: https://gouba2333.github.io/BoxComm
+- Paper: http://arxiv.org/abs/2604.04419
+- GitHub: https://github.com/gouba2333/BoxComm
+- Dataset: https://huggingface.co/datasets/gouba2333/BoxComm-Dataset
+- Benchmark: https://huggingface.co/datasets/gouba2333/BoxComm
+
+## Highlights
+
+- Category-aware boxing commentary generation with 3 commentary classes
+- Official data preparation, training, inference, and evaluation pipeline for Qwen3-VL
+- Support for both segment-level generation evaluation and commentary-rhythm evaluation
+- Visualization notebook for inspecting video, skeleton, ASR, and event annotations
+- Official benchmark manifest for the 40-video evaluation split
 
 The paper is:
 
@@ -68,7 +84,7 @@ export HF_TOKEN=YOUR_HUGGINGFACE_TOKEN
 
 ## Data Layout
 
-After downloading the released data, place files as follows:
+The released dataset contains the complete processed videos and annotations. After downloading the released data, place files as follows:
 
 ```text
 data/
@@ -88,6 +104,16 @@ The split convention used in this release is:
 - `eval`: video id `>= 478`
 
 See [data/README.md](data/README.md) for a compact summary.
+
+## Benchmark Files
+
+The current repository already includes benchmark-side structured metadata:
+
+- eval manifest: [benchmark/manifests/benchmark_manifest_eval_v1.jsonl](benchmark/manifests/benchmark_manifest_eval_v1.jsonl)
+- eval metadata table: [benchmark/metadata/eval_metadata_v1.csv](benchmark/metadata/eval_metadata_v1.csv)
+- benchmark card draft: [docs/huggingface_benchmark_card.md](docs/huggingface_benchmark_card.md)
+
+These files are intended to be mirrored into the public benchmark release.
 
 ## ASR Pipeline
 
@@ -109,9 +135,9 @@ The final ASR JSON files consumed by the rest of the pipeline should contain `cl
 
 ## Visualizing the Released Data
 
-Open [notebooks/visualize_sample_478.ipynb](notebooks/visualize_sample_478.ipynb). The notebook shows how to:
+Open [notebooks/visualize_sample.ipynb](notebooks/visualize_sample.ipynb). The notebook shows how to:
 
-- load video `id=478`
+- load a sample video
 - decode frame `200`
 - load the event-side skeleton `.pkl`
 - overlay skeleton points on the frame
@@ -221,8 +247,28 @@ This script reports:
 - sentence-level 3-class temporal IoU
 - minute-level KL divergence between predicted and ground-truth class distributions
 
+## License
+
+The code in this repository is released under the Apache-2.0 License. See [LICENSE](LICENSE).
+
+The released dataset and benchmark include the processed videos, ASR annotations, event annotations, skeleton data, and benchmark metadata for research use.
+
+## Citation
+
+If you find BoxComm useful in your research, please cite:
+
+```bibtex
+@article{wang2026boxcomm,
+  title={BoxComm: Benchmarking Category-Aware Commentary Generation and Narration Rhythm in Boxing},
+  author={Wang, Kaiwen and Zheng, Kaili and Deng, Rongrong and Shi, Yiming and Guo, Chenyi and Wu, Ji},
+  journal={arXiv preprint arXiv:2604.04419},
+  year={2026}
+}
+```
+
 ## Notes
 
 - The scripts in this release read API credentials from environment variables only. No keys are hard-coded.
 - The event extraction JSON and skeleton PKL are expected to stay together under the same per-video event folder.
-- The current release keeps only `infer_qwen3vl.py` for Qwen3-VL inference. Other model baselines used in internal experiments are not included here.
+- The repository provides the official Qwen3-VL pipeline together with standardized data and evaluation interfaces for future external model comparisons.
+- To publish the public Dataset and Benchmark pages, follow [docs/release_checklist.md](docs/release_checklist.md).
