@@ -1,0 +1,12 @@
+__pycache__/
+.ipynb_checkpoints/
+outputs/
+
+data/train/videos/*
+data/train/events/*
+data/train/asr/*
+data/eval/videos/*
+data/eval/events/*
+data/eval/asr/*
+
+!data/README.md
