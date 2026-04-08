@@ -29,7 +29,7 @@ The paper is:
 │       ├── events/
 │       └── asr/
 ├── notebooks/
-│   └── visualize_sample_478.ipynb
+│   └── visualize_sample.ipynb
 ├── scripts/
 │   ├── prep_qwen3vl_sft_data.py
 │   ├── train_qwen3vl.py
