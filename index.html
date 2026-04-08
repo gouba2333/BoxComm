@@ -83,7 +83,8 @@
         <div class="figure-card teaser-card">
           <img src="static/images/teaser.png" alt="BoxComm teaser figure" />
           <div class="figure-caption">
-            Unlike team sports, combat sports like boxing feature highly dynamic, sub-second actions and demand a significantly higher proportion of tactical commentary (45.6% vs. 21.7% in team sports). To address these unique characteristics, BoxComm introduces a new benchmark based on a three-tier commentary taxonomy—Play-by-Play, Tactical, and Contextual —specifically designed to evaluate both the content ("what to say") and the narration rhythm ("when to say")  of automated sports generation.
+            Existing sports commentary benchmarks mainly target generic narration or sentence-level alignment. BoxComm instead targets combat-sport-specific, category-aware, streaming commentary, where both discourse type and narration rhythm are first-class evaluation targets. Boxing features highly dynamic, sub-second actions and a much higher proportion of tactical commentary (45.6% vs. 21.7% in team sports), which makes simple transfer from generic sports narration benchmarks insufficient.
+          </div>
         </div>
       </section>
 
@@ -99,7 +100,7 @@
                 <div class="icon">🎙️</div>
                 <div>
                   <strong>Category-aware commentary</strong>
-                  <span>Each sentence is labeled as play-by-play, tactical, or contextual, so models are tested on discourse type rather than generic narration alone.</span>
+                  <span>Each sentence is labeled as play-by-play, tactical, or contextual, so the task is explicitly about discourse control in combat-sport commentary rather than generic narration alone.</span>
                 </div>
               </div>
               <div class="bullet-item">
@@ -112,8 +113,8 @@
               <div class="bullet-item">
                 <div class="icon">⏱️</div>
                 <div>
-                  <strong>Streaming evaluation</strong>
-                  <span>Benchmark tasks cover both single-moment category-conditioned generation and full-stream commentary rhythm assessment.</span>
+                  <strong>Structured evaluation</strong>
+                  <span>We do not rely on a single holistic judge score. Instead, BoxComm factorizes commentary quality into discourse type, local semantic correctness, and global narration rhythm, making evaluation more structured than unconstrained commentary scoring.</span>
                 </div>
               </div>
             </div>

@@ -38,7 +38,7 @@
             <h1 class="hero-title">Two complementary protocols for <span class="accent">accuracy and rhythm</span></h1>
             <p class="hero-subtitle">
               BoxComm evaluates both instant commentary correctness and long-horizon broadcast pacing.
-              The benchmark is intended to reveal whether a model can describe the right thing at the right time and in the right discourse mode.
+              The benchmark is intended to reveal whether a model can describe the right thing at the right time and in the right discourse mode, rather than collapsing commentary quality into a single unconstrained subjective score.
             </p>
             <div class="hero-actions">
               <a class="btn btn-primary" href="dataset.html">Open Demo Viewer</a>
@@ -63,12 +63,42 @@
           <span class="section-kicker">Protocols</span>
           <h2>From sentence-level correctness to full-stream pacing</h2>
           <p class="lead">
-            The two benchmark protocols intentionally target different failure modes. One measures local semantic precision under category control, while the other measures global temporal behavior over continuous clips.
+            The two benchmark protocols intentionally target different failure modes. One measures local semantic precision under category control, while the other measures global temporal behavior over continuous clips. Together they turn commentary assessment into a structured evaluation problem instead of an unconstrained preference judgment.
           </p>
         </div>
         <div class="figure-card">
           <img src="static/images/architecture.png" alt="BoxComm benchmark architecture" />
           <div class="figure-caption">Overview of the two proposed evaluation protocols: category-conditioned generation and streaming commentary rhythm assessment.</div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <span class="section-kicker">Evaluation Logic</span>
+          <h2>Why this is more than subjective commentary scoring</h2>
+        </div>
+        <div class="bullet-list">
+          <div class="bullet-item">
+            <div class="icon">🧭</div>
+            <div>
+              <strong>Category control constrains the discourse space</strong>
+              <span>The model is not judged under an open-ended “say anything plausible” setup. It must produce commentary in a specified discourse mode, which makes the target behavior more concrete and comparable.</span>
+            </div>
+          </div>
+          <div class="bullet-item">
+            <div class="icon">📊</div>
+            <div>
+              <strong>Rhythm is measured against professional broadcast patterns</strong>
+              <span>Streaming evaluation compares timing behavior and category usage against real boxing commentary distributions, so rhythm is assessed with reference to expert broadcast practice rather than free-form preference alone.</span>
+            </div>
+          </div>
+          <div class="bullet-item">
+            <div class="icon">🥊</div>
+            <div>
+              <strong>Event-informed baselines expose perception bottlenecks</strong>
+              <span>The event-informed baseline shows that fleeting-action perception materially affects commentary quality, making the benchmark sensitive to combat-specific understanding instead of surface-level fluency only.</span>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -93,13 +123,13 @@
         <div class="section-header">
           <span class="section-kicker">Citation</span>
           <h2>BibTeX</h2>
-          <p class="lead">Replace the placeholder citation with the final publication record when ready.</p>
+          <p class="lead">ArXiv preprint citation for the current BoxComm paper.</p>
         </div>
-        <div class="citation-box">@article{boxcomm2025,
+        <div class="citation-box">@article{boxcomm2026,
   title   = {BoxComm: Benchmarking Category-Aware Commentary Generation and Narration Rhythm in Boxing},
   author  = {Wang, Kaiwen and Zheng, Kaili and Shi, Yiming and Deng, Rongrong and Guo, Chenyi and Wu, Ji},
-  journal = {arXiv preprint},
-  year    = {2025}
+  journal = {arXiv preprint arXiv:2604.04419},
+  year    = {2026}
 }</div>
       </section>
     </main>
